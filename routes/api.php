@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\User;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +21,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('login', [UserController::class, 'login']);
+
+Route::get('cars', [CarController::class, 'getAllCars']);
+
+Route::post('register', [UserController::class, 'register']);
+
+Route::post('reservation', [ReservationController::class, 'addReservation']);
+

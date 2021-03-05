@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Reservation extends Model
 {
     use HasFactory, Notifiable;
 
-    protected $table = 'users';
-    protected $fillable = ['id','email', 'username', 'password', 'role'];
-
+    protected $table = 'reservation';
+    protected $fillable = ['id_car', 'date_from', 'date_to', 'location_from', 'location_to', 'price', 'id_user'];
     public $timestamps = false;
 }
+?>

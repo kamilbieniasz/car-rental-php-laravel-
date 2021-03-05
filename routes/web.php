@@ -23,8 +23,8 @@ Route::get('/token', function() {
     return csrf_token();
 });
 
-Route::get('/cars', [CarController::class, 'getAllCars']);
+//Route::get('/cars', [CarController::class, 'getAllCars']);
 
-Route::post('/login', [UserController::class, 'login']);
+//Route::post('/login', [UserController::class, 'login']);
 
-Route::post('/register', [UserController::class, 'register']);
+//Route::post('/register', [UserController::class, 'register']);

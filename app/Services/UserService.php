@@ -16,7 +16,7 @@ class UserService{
                 if($user->password === $password)
                 {
                     $currentUser = $user;
-                    $response = response()->json(['username' => $user->username, 'email' => $user->email, 'role'=> $user->role], 200);
+                    $response = response()->json(['id' => $user->id, 'username' => $user->username, 'email' => $user->email, 'role'=> $user->role], 200);
                 }
                 else
                 {
@@ -50,7 +50,7 @@ class UserService{
         {
             $inputs = ['email'=>$email, 'username'=>$username, 'password'=>$password, 'role'=>'user'];
             User::create($inputs);
-            return response()->json('User added', 200);
+            return response()->json('User created', 201);
         }
     }
 }
