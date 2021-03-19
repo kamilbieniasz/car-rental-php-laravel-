@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/admin/login', function () {
+    return view('admin-login');
+});
+
 Route::get('/token', function() {
     return csrf_token();
 });
@@ -28,3 +32,6 @@ Route::get('/token', function() {
 //Route::post('/login', [UserController::class, 'login']);
 
 //Route::post('/register', [UserController::class, 'register']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

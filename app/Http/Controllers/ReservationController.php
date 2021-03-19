@@ -17,4 +17,14 @@ class ReservationController extends Controller
                                                 $request->price,
                                                 $request->id_user);
     }
+
+    public function getUserReservation(Request $request, ReservationService $reservationService)
+    {
+        return $reservationService->getUserReservation($request->id_user);
+    }
+
+    public function deleteUserReservation(Request $request, ReservationService $reservationService)
+    {
+        return $reservationService->deleteUserReservation($request->id);
+    }
 }

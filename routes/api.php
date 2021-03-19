@@ -30,3 +30,11 @@ Route::post('register', [UserController::class, 'register']);
 
 Route::post('reservation', [ReservationController::class, 'addReservation']);
 
+Route::post('reservations', [ReservationController::class, 'getUserReservation']);
+
+//Route::delete('reservation/delete', [ReservationController::class, 'deleteUserReservation']);
+
+Route::delete('reservation/{id}',  [ReservationController::class, 'deleteUserReservation']);
+
+Route::post('admin/login', [UserController::class, 'adminLogin']);
+
