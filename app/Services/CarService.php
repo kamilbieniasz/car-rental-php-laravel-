@@ -49,7 +49,7 @@ class CarService
         $car->save();
         return response()->json("Zaaktualizowano dane samochodu", 200);
 
-        // return $car;
+        return $newValue;
     }
 }
 

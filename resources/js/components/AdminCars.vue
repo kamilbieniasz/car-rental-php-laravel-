@@ -26,7 +26,7 @@
           <p class="description">{{ car.description }}</p>
         </span>
         <span class="controls">
-          <i class="fas fa-edit"></i>
+          <i class="fas fa-edit" @click="openEditCarWindow(index)"></i>
           <i class="fas fa-trash-alt" @click="deleteCar(index)"></i>
         </span>
       </li>
@@ -34,7 +34,8 @@
     <button class="add-new-car-btn" @click="openAddCarWindow()">
       Dodaj nowy samochód
     </button>
-    <addCar v-on:handleCarList="handleCarList"></addCar>
+    <editCar v-if="openEditCar" v-on:handleCarList="handleCarList" :car="currentCar"></editCar>
+    <addCar v-if="openAddCar" v-on:handleCarList="handleCarList"></addCar>
   </div>
 </template>
 <script>
@@ -47,6 +48,9 @@ export default {
   data() {
     return {
       carList: [],
+      currentCar: '',
+      openEditCar: false,
+      openAddCar: false
     };
   },
   methods: {
@@ -56,7 +60,6 @@ export default {
         .then((response) => {
           if (response) {
             this.carList = response.data;
-            console.log(this.carList);
           }
         })
         .catch((error) => {
@@ -64,8 +67,9 @@ export default {
         });
     },
     openAddCarWindow() {
-      const carAddWindow = document.querySelector(".add-car");
-      carAddWindow.style.display = "flex";
+      //const carAddWindow = document.querySelector(".add-car");
+      //carAddWindow.style.display = "flex";
+      this.openAddCar = !this.openAddCar;
     },
     deleteCar(id) {
       const carId = this.carList[id].id;
@@ -74,8 +78,14 @@ export default {
         .then(this.handleCarList())
         .catch((error) => console.log(error));
     },
-    debbuging(){
-      console.log("Parent method");
+    openEditCarWindow(id){
+      //const editCarWindow = document.querySelector(".edit-car");
+      //editCarWindow.style.display = "flex";
+      this.openEditCar = !this.openEditCar; 
+      this.currentCar = this.carList[id];
+    },
+    handleCarById(){
+      return this.currentCar;
     }
   },
   created() {
@@ -145,11 +155,11 @@ export default {
     border-radius: 15px;
   }
 }
-.add-car {
+.add-car, .edit-car {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
-  display: none;
+  display: flex;
 }
 </style>
