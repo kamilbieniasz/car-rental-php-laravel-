@@ -8,7 +8,7 @@ class UserService{
     public function login($username, $password)
     {
         $users = User::all();
-        $response;
+        $response = null;
         foreach($users as $user)
         {
             if($user->username === $username)

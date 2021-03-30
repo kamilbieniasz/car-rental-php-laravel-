@@ -38,3 +38,8 @@ Route::delete('reservation/{id}',  [ReservationController::class, 'deleteUserRes
 
 Route::post('admin/login', [UserController::class, 'adminLogin']);
 
+Route::post('car/add', [CarController::class, 'addNewCar']);
+
+Route::patch('car/update', [CarController::class, 'updateCar']);
+
+Route::delete('car/{id}', [CarController::class, 'deleteCar']);

@@ -19,19 +19,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin/login', function () {
-    return view('admin-login');
-});
+// Route::get('/admin/login', function () {
+//     return view('admin-login');
+// });
+
+//Route::view('/admin/login', 'admin-login');
+Route::get('/admin/{any}', function(){
+    return view('home');
+})->where('any', '.*');
 
 Route::get('/token', function() {
     return csrf_token();
 });
+
 
 //Route::get('/cars', [CarController::class, 'getAllCars']);
 
 //Route::post('/login', [UserController::class, 'login']);
 
 //Route::post('/register', [UserController::class, 'register']);
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

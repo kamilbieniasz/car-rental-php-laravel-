@@ -12,4 +12,7 @@ class Car extends Model
 
     protected $table = 'car';
 
+    protected $fillable = ['id','mark', 'model', 'engine_capacity', 'type', 'year', 'color', 'location', 'price', 'image', 'description'];
+
+    public $timestamps = false;
 }
